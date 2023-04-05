@@ -35,7 +35,7 @@ const Product = ({product, dispatch, REDUCER_ACTIONS, inCart}: PropsType): React
 function areProductsEqual({product: prevProduct, inCart: prevInCart}: PropsType, {product: nextProduct, inCart: nextInCart}: PropsType){
   return Object.keys(prevProduct).every(key => {
     return prevProduct[key as keyof ProductType] === nextProduct[key as keyof ProductType]
-  })
+  }) && prevInCart === nextInCart
 }
 
 const MemoizedProduct = memo<typeof Product>(Product, areProductsEqual)
